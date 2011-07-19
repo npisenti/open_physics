@@ -7,6 +7,7 @@ gem 'rails', '3.0.9'
 
 gem 'sqlite3'
 gem 'vestal_versions', :git => 'git://github.com/adamcooper/vestal_versions'
+gem 'authlogic'
 
 
 group :development do
