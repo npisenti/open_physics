@@ -26,7 +26,6 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-
   end
 
   # GET /users/1/edit

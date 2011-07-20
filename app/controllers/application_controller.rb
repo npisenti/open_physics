@@ -1,10 +1,8 @@
+require "authlogic"
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  helper_method :current_user_session, :current_user, :signed_in?
 
-
-  helper_method :current_user
-
-  private
   def current_user_session
     @current_user_session ||= UserSession.find
   end
@@ -20,4 +18,32 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  def signed_in?
+    !current_user.nil?
+  end
+
+  def sign_in(user)
+    activate_authlogic
+    UserSession.create(user)
+  end
+
+  def deny_access
+    store_location
+    redirect_to login_path, :notice => "Please sign in to access this page"
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    clear_return_to
+  end
+
+  private
+  def store_location
+    session[:return_to] = request.fullpath
+  end
+
+  def clear_return_to
+    session[:return_to] = nil
+  end
 end
