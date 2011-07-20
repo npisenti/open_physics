@@ -1,5 +1,10 @@
 OpenPhysics::Application.routes.draw do
   resources :users
+  resource :user_sessions
+  #match 'login' => 'user_sessions#new', :as => :login
+  #match 'logout' => 'user_sessions#destroy', :as => :logout
+  match '/login', :to => 'user_sessions#new'
+  match '/logout', :to => 'user_sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
