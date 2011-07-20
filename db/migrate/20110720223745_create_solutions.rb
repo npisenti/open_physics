@@ -1,7 +1,7 @@
 class CreateSolutions < ActiveRecord::Migration
   def self.up
     create_table :solutions do |t|
-      t.text :contents
+      t.text :content
       t.integer :problem_id
 
       t.timestamps

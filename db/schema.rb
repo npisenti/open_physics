@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20110720223745) do
   end
 
   create_table "solutions", :force => true do |t|
-    t.text     "contents"
+    t.text     "content"
     t.integer  "problem_id"
     t.datetime "created_at"
     t.datetime "updated_at"
