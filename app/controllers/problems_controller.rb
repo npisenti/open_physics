@@ -29,6 +29,7 @@ class ProblemsController < ApplicationController
 
   def show
     @problem = Problem.find(params[:id])
+    @problem.revert_to(params[:version].to_i) if params[:version] 
   end
 
   def index

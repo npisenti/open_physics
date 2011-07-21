@@ -1,2 +1,4 @@
-<h2>Problem <%= problem.name %></h2><%= link_to "Edit", edit_problem_path(problem)  %>
+<h2>Problem <%= problem.name %></h2><%= link_to "Edit", edit_problem_path(problem)  %> | Version <%= problem.version %> |<% if problem.version > 1 %>
+  <%= link_to "prev. version", problem_path(problem, :version => problem.version - 1) %> 
+<% end%>
 <p><%= problem.statement %></p>
