@@ -8,6 +8,12 @@
     <%= f.label :statement %><br />
     <%= f.text_area :statement %>
   </div>
+  <%= fields_for @solution do |s| %>
+    <div class="field">
+      <%= s.label :content, "Solution" %><br />
+      <%= s.text_area :content %>
+    </div>
+  <% end%> 
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>
