@@ -18,6 +18,13 @@
       <%= link_to "Login", :login %>
     <% end %>
   </div>
+
+
+  <% if content_for?(:flash_msg) %>
+    <%= yield(:flash_msg) %>
+  <% else %>
+    <%= render(:partial => 'shared/flash', :locals => { :flash => flash }) %>
+  <% end %>
 <%= yield %>
 
 </body>
