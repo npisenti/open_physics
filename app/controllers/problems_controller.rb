@@ -43,5 +43,27 @@ class ProblemsController < ApplicationController
 
   def index
     @problems = Problem.all
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @problems.to_xml(:include => [:solutions]) }
+    end
+
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

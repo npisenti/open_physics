@@ -1,2 +1,51 @@
+<script>
+  $(function() {
+    var tags = [];
+    $.get('/problems.xml', function(data) {
+      var problems = $(data);
+      problems.find('problem').each(function(){ 
+        tags.push($(this).find('name').text());
+        $( "#tags" ).autocomplete({
+          source: tags
+        });
+      });
+    }); 
+  /*  var availableTags = [
+    "ActionScript",
+    "AppleScript",
+    "Asp",
+    "BASIC",
+    "C",
+    "C++",
+    "Clojure",
+    "COBOL",
+    "ColdFusion",
+    "Erlang",
+    "Fortran",
+    "Groovy",
+    "Haskell",
+    "Java",
+    "JavaScript",
+    "Lisp",
+    "Perl",
+    "PHP",
+    "Python",
+    "Ruby",
+    "Scala",
+    "Scheme"
+    ];
+    console.log(tags);
+    $( "#tags" ).autocomplete({
+     // source: availableTags
+     source: availableTags
+    });*/
+  });
+</script>
+
 <h1>Open Source Physics!</h1>
 <p>Because the world needs a databse of open-source physics problems.</p>
+
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="tags" />
+</div>
