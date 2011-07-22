@@ -46,7 +46,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xml { render :xml => @problems.to_xml(:include => [:solutions]) }
+      format.xml { render :xml => @problems.to_xml(:include => [:solutions, :tags]) }
     end
 
   end

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110721012141) do
+ActiveRecord::Schema.define(:version => 20110722004435) do
+
+  create_table "problem_tags", :force => true do |t|
+    t.integer  "problem_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "problem_tags", ["problem_id", "tag_id"], :name => "index_problem_tags_on_problem_id_and_tag_id", :unique => true
+  add_index "problem_tags", ["problem_id"], :name => "index_problem_tags_on_problem_id"
+  add_index "problem_tags", ["tag_id"], :name => "index_problem_tags_on_tag_id"
 
   create_table "problems", :force => true do |t|
     t.string   "name"
@@ -22,6 +33,12 @@ ActiveRecord::Schema.define(:version => 20110721012141) do
   create_table "solutions", :force => true do |t|
     t.text     "content"
     t.integer  "problem_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
