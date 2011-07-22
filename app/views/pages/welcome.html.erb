@@ -4,12 +4,15 @@
     $.get('/problems.xml', function(data) {
       var problems = $(data);
       problems.find('problem').each(function(){ 
-        tags.push($(this).find('name').text());
-        $( "#tags" ).autocomplete({
-          source: tags
+        $(this).find('tag').each(function(){
+          tags.push($(this).find('name').text());
         });
       });
-    }); 
+      $( "#tags" ).autocomplete({
+        source: $.unique(tags)
+      });
+      console.log(tags);
+    });
   /*  var availableTags = [
     "ActionScript",
     "AppleScript",
